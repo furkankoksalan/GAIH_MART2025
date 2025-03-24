@@ -1,90 +1,109 @@
-# GAIH_MART2025
+# 🚇 Akıllı Metro Ağı Simülasyonu
 
-#  Metro Ağı Simülasyonu
+### 🔍 En Verimli Güzergahı Bulan, En Az Aktarma Yapan Ulaşım Rehberi
 
-Bu proje, bir şehir metrosunun istasyon ve hat yapısını simüle eder. A* algoritması ile en hızlı rotayı, BFS algoritması ile en az aktarma yapılan rotayı bulur. Ayrıca bulunan rota grafiksel olarak görselleştirilir.
-
----
-
-## 🛠 Kullanılan Teknolojiler ve Kütüphaneler
-
-Python 3 ile geliştirilmiştir. Kullanılan kütüphaneler:
-
-- `collections`: deque veri yapısı ile BFS kuyruğu için
-- `heapq`: öncelikli kuyruk (A* algoritması) için
-- `math`: koordinatlar arası uzaklık (heuristic)
-- `networkx`: graf yapısını oluşturmak ve analiz etmek için
-- `matplotlib`: grafikleri çizmek ve görselleştirme yapmak için
-- `time`: algoritma çalışma süresini ölçmek için
+Bu proje, bir şehir metrosunun istasyon ve hat yapısını simüle eder. A* algoritması ile **en hızlı rotayı**, BFS algoritması ile **en az aktarma yapılan** rotayı bulur. Gelişmiş görselleştirme ve kullanıcıya yönelik rota analiziyle fark yaratır.
 
 ---
 
-## 📌 Algoritmaların Çalışma Mantığı
+## 🎯 Proje Amacı
 
-### 🔹 1. BFS (Breadth-First Search) – En Az Aktarma
+Gerçek bir metro kullanıcısı gibi düşün:  
+🧍‍♂️ “Aktarma az olsun”  
+⏱️ “Zaman kaybetmeyeyim”  
+🧭 “Rota net ve görsel olsun”
 
-- Her istasyonu ziyaret ederek hedefe giden en kısa aktarma sayılı rotayı bulur.
-- Aktarma, iki istasyon farklı hatlardaysa sayılır.
-- BFS sırası `deque` ile takip edilir.
-- Her istasyon-hat çifti ayrı ziyaret kontrolü ile optimize edilmiştir.
-
-### 🔹 2. A* Algoritması – En Hızlı Rota
-
-- Gelişmiş öncelikli kuyruk algoritmasıdır.
-- Her adımda: `g(n) + h(n)` hesaplanır.
-  - `g(n)`: o ana kadar olan toplam süre
-  - `h(n)`: kalan tahmini süre (heuristic olarak koordinat uzaklığı)
-- En kısa sürede hedefe ulaşan rotayı bulur.
-- Öncelikli kuyruk `heapq` ile uygulanır.
-
-### 🔸 Neden Bu Algoritmalar?
-
-- **BFS**, en kısa adım sayısını (dolayısıyla aktarma sayısını) garantiler.
-- **A\***, süre bazlı tahminle daha hızlı çözümler üretir.
-- Her iki algoritma metro yolculuğunun farklı ihtiyaçlarına hitap eder.
+Bu projede amaç, bu üç kullanıcı beklentisini **yapay zeka destekli algoritmalarla** karşılamaktır.
 
 ---
 
-## 🧪 Örnek Kullanım ve Test Sonuçları
+## 🧠 Fark Yaratan Özellikler
 
-### 🛤️ Örnek İstasyonlar
-
-- **Kırmızı Hat**: Kızılay → Ulus → Demetevler → OSB  
-- **Mavi Hat**: AŞTİ → Kızılay → Sıhhiye → Gar  
-- **Turuncu Hat**: Batıkent → Demetevler → Gar → Keçiören
-
-### 🔁 Örnek Test Senaryoları
-
-**1. AŞTİ → OSB**
-- En az aktarma: `AŞTİ -> Kızılay -> Ulus -> Demetevler -> OSB`
-- En hızlı rota: (süre ve adım sayısı gösterilir)
-
-**2. Batıkent → Keçiören**
-- Direkt turuncu hat üzerinde
-- En az aktarma: 0
-- En hızlı rota: rota ve süre yazdırılır
-
-**3. Keçiören → AŞTİ**
-- 2 aktarma noktası içerir (Gar ve Kızılay)
-- A* rotası süre bazında daha verimli olabilir
-
-### 📈 Görselleştirme
-
-Rotayı grafik olarak çizen fonksiyon kullanılmıştır. İstasyonlar düğüm, geçişler kenar olarak gösterilir. Rota kırmızı renkle vurgulanır.
+- 🚦 Hem **en az aktarma** hem de **en kısa sürede ulaşım**
+- 📊 **Grafik destekli güzergah haritası**
+- ♻️ Genişletilebilir veri yapısı
+- 🧩 Gelecekte gerçek şehir verileriyle entegre edilebilir
 
 ---
 
-## 🚀 Projeyi Geliştirme Fikirleri
+## 🛠️ Kullanılan Teknolojiler
 
-- Gerçek şehir metrolarıyla (İstanbul, Ankara) veri tabanı bağlantısı
-- Web arayüzü (Streamlit/Flask) ile kullanıcı dostu yapı
-- Kullanıcıdan kalkış-varış alma
-- JSON/CSV veri ile dış veri aktarımı
-- Aktarma sürelerini daha detaylı modelleme (bekleme süreleri gibi)
-- Metro kart entegrasyonu (sanal bilet ücreti hesaplama)
+| Kütüphane | Açıklama |
+|----------|----------|
+| `collections.deque` | BFS kuyruğu için |
+| `heapq` | A* öncelikli kuyruk için |
+| `math` | Koordinat bazlı heuristic hesaplama |
+| `networkx` | Metro ağı graf yapısı |
+| `matplotlib` | Rota görselleştirmesi |
+| `time` | Algoritma süresi ölçümü |
 
 ---
 
-**Hazırlayan:** [Furkan Köksalan]  
+## ⚙️ Algoritmalar
 
+### 🔹 BFS (Breadth-First Search) – En Az Aktarma
 
+- İstasyon-hat çiftleri ayrı düğüm gibi ele alınır.
+- Hat değişimi olduğunda **aktarma sayılır**.
+- `deque` ile seviyeli tarama yapılır.
+- En az aktarma sayısıyla hedefe ulaşılır.
+
+### 🔸 A* Algoritması – En Hızlı Rota
+
+- Her adımda `g(n) + h(n)` değeri hesaplanır:
+  - `g(n)`: O ana kadar geçen süre
+  - `h(n)`: Kalan tahmini süre (heuristic)
+- `heapq` ile öncelikli kuyruk üzerinde çalışır.
+- Gerçek zamanlı en hızlı rota bulunur.
+
+---
+
+## 🧪 Örnek Senaryolar
+
+| Başlangıç | Varış | En Az Aktarma | A* Süresi | A* Rota |
+|-----------|-------|----------------|-----------|---------|
+| AŞTİ | OSB | AŞTİ → Kızılay → Ulus → Demetevler → OSB | 12 dk | Aynı rota veya varyant |
+| Batıkent | Keçiören | Direkt Turuncu Hat (0 aktarma) | 6 dk | Batıkent → Gar → Keçiören |
+| Keçiören | AŞTİ | 2 aktarma (Gar, Kızılay) | 14 dk | Keçiören → Gar → Sıhhiye → Kızılay → AŞTİ |
+
+> 📌 Testler sonucunda, A* algoritması süre bakımından avantaj sağlar. Ancak hat sayısı arttıkça aktarma oranı artabilir.
+
+> ![image](https://github.com/user-attachments/assets/b92b62fc-5cb3-474b-94a5-1598f2acd05b)
+
+> ![image](https://github.com/user-attachments/assets/5b3b66d1-32a5-4242-afcc-1b5bf43a830c)
+
+> ![image](https://github.com/user-attachments/assets/26c5e931-223d-4dcd-a3c0-6e1274124542)
+
+> ![image](https://github.com/user-attachments/assets/dae2ae30-20f0-462d-b3ff-84e05cbc79e6)
+
+---
+
+## 📈 Görselleştirme
+
+`NetworkX` ve `Matplotlib` ile metro ağı görselleştirilir:
+
+- 🟢 İstasyonlar: düğüm
+- 🔵 Hatlar: kenar
+- 🔴 Seçilen rota: vurgulu kırmızı çizgi
+
+Grafikler sayesinde yolcunun rota üzerindeki geçişleri **anlaması ve güven duyması** sağlanır.
+
+---
+
+## 🚀 Geliştirme Fikirleri
+
+- 🌐 Web arayüz (Streamlit, Flask)  
+- 🗺️ İstanbul, Ankara metrolarının entegrasyonu  
+- ⌛ Aktarma gecikme sürelerinin modellenmesi  
+- 📁 JSON / CSV dış veri kaynağı  
+- 🧮 Metro ücreti hesaplama (bakiye simulasyonu)  
+- 📱 Mobil uygulama ile konum bazlı kullanım  
+
+---
+
+## 🧩 Projenin Farkı
+
+> Bu proje yalnızca bir “algoritma gösterisi” değil.  
+Gerçek hayattaki yolcu davranışlarını, **mühendislik zekası** ve **optimizasyon prensipleri** ile birleştirerek sunar.
+
+---
