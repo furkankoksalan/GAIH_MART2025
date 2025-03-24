@@ -1,6 +1,6 @@
-# 🚇 Akıllı Metro Ağı Simülasyonu
+#  Akıllı Metro Ağı Simülasyonu
 
-### 🔍 En Verimli Güzergahı Bulan, En Az Aktarma Yapan Ulaşım Rehberi
+###  En Verimli Güzergahı Bulan, En Az Aktarma Yapan Ulaşım Rehberi
 
 Bu proje, bir şehir metrosunun istasyon ve hat yapısını simüle eder. A* algoritması ile **en hızlı rotayı**, BFS algoritması ile **en az aktarma yapılan** rotayı bulur. Gelişmiş görselleştirme ve kullanıcıya yönelik rota analiziyle fark yaratır.
 
@@ -70,11 +70,7 @@ Bu projede amaç, bu üç kullanıcı beklentisini **yapay zeka destekli algorit
 
 > ![image](https://github.com/user-attachments/assets/b92b62fc-5cb3-474b-94a5-1598f2acd05b)
 
-> ![image](https://github.com/user-attachments/assets/5b3b66d1-32a5-4242-afcc-1b5bf43a830c)
-
 > ![image](https://github.com/user-attachments/assets/26c5e931-223d-4dcd-a3c0-6e1274124542)
-
-> ![image](https://github.com/user-attachments/assets/dae2ae30-20f0-462d-b3ff-84e05cbc79e6)
 
 ---
 
